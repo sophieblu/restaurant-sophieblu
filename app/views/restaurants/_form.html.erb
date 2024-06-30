@@ -1,0 +1,7 @@
+<%= simple_form_for @restaurant do |f| %>
+  <div class="d-flex justify-content-between align-items-center mt-3 mb-3">
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
