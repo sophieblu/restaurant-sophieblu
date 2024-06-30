@@ -3,7 +3,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.order(created_at: :desc)
   end
 
   def show
@@ -19,7 +19,10 @@ class RestaurantsController < ApplicationController
   def create
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.save
-    redirect_to restaurant_path(@restaurant)
+    respond_to do |format|
+      format.html { redirect_to restaurant_path(@restaurant) }
+      format.turbo_stream
+    end
   end
 
   def update

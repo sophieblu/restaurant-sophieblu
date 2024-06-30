@@ -4,6 +4,8 @@
     <hr>
   </div>
   <div>
-    <%= render "restaurants/form" %>
+    <%= turbo_frame_tag "new_restaurant" do %>
+      <%= render "restaurants/form" %>
+    <% end %>
   </div>
 </div>
